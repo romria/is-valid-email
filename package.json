@@ -1,0 +1,17 @@
+{
+  "name": "is-valid-email",
+  "version": "0.1.0",
+  "description": "",
+  "repository": "https://github.com/romria/is-valid-email",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon --watch ./src/* ./src/index.js",
+    "test": ""
+  },
+  "author": "romria",
+  "license": "Unlicense",
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22"
+  }
+}
