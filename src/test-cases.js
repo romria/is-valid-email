@@ -1,5 +1,3 @@
-import isValidEmail from './is-valid-email';
-
 const VALID_EMAILS = [
   `simple@example.com`,
   `very.common@example.com`,
@@ -299,30 +297,7 @@ const INVALID_EMAILS = [
   `first.last@[IPv6:a1:a2:a3:a4::b1:b2:b3:b4]`,
 ];
 
-// beforeEach(() => {
-//   jest.spyOn(console, 'warn').mockImplementation(() => {});
-// });
-//
-// beforeAll(() => {
-//   jest.spyOn(console, 'log').mockImplementation(() => {});
-//   jest.spyOn(console, 'error').mockImplementation(() => {});
-//   jest.spyOn(console, 'warn').mockImplementation(() => {});
-//   jest.spyOn(console, 'info').mockImplementation(() => {});
-//   jest.spyOn(console, 'debug').mockImplementation(() => {});
-// });
-
-describe("valid emails", () => {
-  test.each(VALID_EMAILS)("case %p", (email) => {
-    const result = isValidEmail(email);
-    expect(result).toBe(true);
-  });
-});
-
-describe("invalid emails", () => {
-  test.each(INVALID_EMAILS)("case %p", (email) => {
-    const result = isValidEmail(email);
-    expect(result).toBe(false);
-  });
-});
-
-
+module.exports = {
+  VALID_EMAILS,
+  INVALID_EMAILS,
+}

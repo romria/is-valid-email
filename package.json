@@ -5,16 +5,8 @@
   "repository": "https://github.com/romria/is-valid-email",
   "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon --watch ./src/* ./src/index.js",
-    "test": "jest --no-color 2>test_result.txt"
+    "start": "node ./src/index.js"
   },
   "author": "romria",
-  "license": "Unlicense",
-  "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
-    "babel-jest": "^29.5.0",
-    "jest": "^29.5.0",
-    "nodemon": "^2.0.22"
-  }
+  "license": "Unlicense"
 }

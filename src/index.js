@@ -1,23 +1,16 @@
-const http = require("http");
-const fs = require('fs').promises;
+const isValidEmail = require('./is-valid-email');
+const {VALID_EMAILS, INVALID_EMAILS} = require('./test-cases');
 
-const host = 'localhost';
-const port = 8000;
+const getPattern = (isValid) => `${isValid ? '\x1b[32m ✓' : '\x1b[31m ✕'} %s\x1b[0m`
 
-const requestListener = function (req, res) {
-  fs.readFile(__dirname + "/index.html")
-    .then(contents => {
-      res.setHeader("Content-Type", "text/html");
-      res.writeHead(200);
-      res.end(contents);
-    })
-    .catch(err => {
-      res.writeHead(500);
-      res.end(err);
-    });
-};
-
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`);
+console.log('\x1b[33m%s\x1b[0m', '=========== THESE SHOULD BE VALID ===========');
+VALID_EMAILS.forEach(email => {
+  console.log(getPattern(isValidEmail(email)), email);
 });
+console.log('\x1b[33m%s\x1b[0m', '===============================================');
+
+console.log('\x1b[33m%s\x1b[0m', '=========== THESE SHOULD BE INVALID ===========');
+INVALID_EMAILS.forEach(email => {
+  console.log(getPattern(isValidEmail(email)), email);
+});
+console.log('\x1b[33m%s\x1b[0m', '===============================================');
