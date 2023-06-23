@@ -22,7 +22,6 @@ export default (email) => {
   if (domain.length > 255) return false;
 
   const domainLabels = domain.split('.');
-  console.log(domainLabels)
 
   // domain label: 63 octets or less (RFC 1035 section 2.3.4)
   if (domainLabels.some((label) => label.length > 63 || !RX_DOMAIN_LABEL_RFC1123.test(label))) return false;
