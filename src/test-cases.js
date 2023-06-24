@@ -216,7 +216,7 @@ const INVALID_EMAILS = [
   `test@test@iana.org`,
   `test@@iana.org`,
   `-- test --@iana.org`,
-  `  [test]@iana.org`,
+  `[test]@iana.org`,
   `"test"test"@iana.org`,
   `()[]\\;:,><@iana.org`,
   `test@.`,
