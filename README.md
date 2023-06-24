@@ -36,7 +36,12 @@ npm install
 ```bash
 npm start
 ```
-open [http://localhost:8000](http://localhost:8000)
 
 ### Links
-* w.i.p.
+* [Disposable Email Domains](https://github.com/disposable-email-domains/disposable-email-domains)
+* [RFC 822 "ARPA INTERNET TEXT MESSAGES"](https://datatracker.ietf.org/doc/html/rfc822)
+* [RFC 5321 "Simple Mail Transfer Protocol"](https://datatracker.ietf.org/doc/html/rfc5321)
+* [RFC 5322 "Internet Message Format"](https://datatracker.ietf.org/doc/html/rfc5322)
+* [RFC 1035 "DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION"](https://datatracker.ietf.org/doc/html/rfc1035)
+* [RFC 952 "DOD INTERNET HOST TABLE SPECIFICATION"](https://datatracker.ietf.org/doc/html/rfc952)
+* [RFC 1123 "Requirements for Internet Hosts -- Application and Support"](https://datatracker.ietf.org/doc/html/rfc1123)
