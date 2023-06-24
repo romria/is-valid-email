@@ -20,7 +20,18 @@ This repository covers only **Email validation** procedure, considering differen
 
 Since there is no 100%-efficient way to validate entered email, it always comes to a tradeoff between accuracy and algorithm complexity, which can include time-consuming third-party API requests.
 
-This particular validation is based on known best practices and my personal experience. 
+This particular validation is based on known best practices and my personal experience.
+
+### Supported features:
+* General rules based on RFC 822, RFC 5321, RFC 5322, RFC 1035, RFC 952, RFC 1123
+* IPv4/IPv6 domains
+* Check for disposable email providers
+
+### To be added:
+* TLD check
+* Unicode support
+* quotes ""
+* comments ()
 
 ---
 
