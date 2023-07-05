@@ -16,11 +16,10 @@ Primarily, we should think this over from the business prospective:
 
 ---
 
-This repository covers only **Email validation** procedure, considering different algorithms and actions while trying to find the most optimal approach.
+This repository covers only **Email validation** procedure, considering different algorithms and actions while trying to find the most 
+optimal approach. It is based on standards, known best practices and personal experience.
 
-Since there is no 100%-efficient way to validate entered email, it always comes to a tradeoff between accuracy and algorithm complexity, which can include time-consuming third-party API requests.
-
-This particular validation is based on known best practices and my personal experience.
+Regular expressions used in the algorithm are ReDoS safe.
 
 ### Supported features:
 * General rules based on RFC 822, RFC 5321, RFC 5322, RFC 1035, RFC 952, RFC 1123
