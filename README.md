@@ -38,12 +38,7 @@ This particular validation is based on known best practices and my personal expe
 ### Prerequisites
 * [Node.js](https://nodejs.org/) v18.11.0 or higher
 
-### Installation
-```bash
-npm install
-```
-
-### Run
+### Run test cases
 ```bash
 npm start
 ```
