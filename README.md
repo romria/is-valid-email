@@ -1,5 +1,7 @@
 ## Front-End Email Validator
 
+🔭🔬🧪 Version is stable to use and further research is going on
+
 ### Q&A: Email validation VS email verification?
 
 We should clearly distinguish **Email validation** and **Email verification** processes.
@@ -12,14 +14,17 @@ Primarily, we should think this over from the business prospective:
 * How much is it important to force users using a real email?
 * Should we allow users to use temporary/disposable email services?
 * Should it be required to confirm email ownership via confirmation letter/link before allowing to use the app?
-* What are possible consequences users might face when using not a real or disposable email and how this affects business? (e.g. some other person might take control of the account, which can include paid services or sensitive information)
+* What are possible consequences users might face when used not a real or disposable email and how this affects business? (e.g. some other person might take control of the account, which can include paid services or sensitive information)
 
 ---
 
 This repository covers only **Email validation** procedure, considering different algorithms and actions while trying to find the most 
 optimal approach. It is based on standards, known best practices and personal experience.
 
-Regular expressions used in the algorithm are ReDoS safe.
+### Algorithm Qualities
+* Used regular expressions are ReDoS safe
+* It doesn't utilize any API requests
+* More focused to avoid false positives (completely invalid emails being marked as valid) rather than false negatives (technically valid emails which were marked as invalid)
 
 ### Supported features:
 * General rules based on RFC 822, RFC 5321, RFC 5322, RFC 1035, RFC 952, RFC 1123

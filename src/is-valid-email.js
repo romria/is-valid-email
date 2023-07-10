@@ -12,6 +12,7 @@ module.exports = function(email) {
 
   const parts = email.split('@');
   // An addr-spec is a specific Internet identifier that contains a locally interpreted string followed by the at-sign character ("@", ASCII value 64) followed by an Internet domain (RFC 5322 section 3.4.1)
+  // ToDo: this should be reworked if quotes allowed
   if (parts.length !== 2) return false;
 
   const [local, domain] = parts;
