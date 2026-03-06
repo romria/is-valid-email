@@ -9,7 +9,8 @@ Email validation function
 ## Commands
 
 ```bash
-npm test           # run vitest test suite (265 passing, ~26 todo)
+npm run build      # tsup: compile src/is-valid-email.ts → dist/ (ESM + .d.ts)
+npm test           # run vitest test suite (296 passing, ~26 todo)
 npm run test:watch # vitest in watch mode
 npm run typecheck  # tsc --noEmit (checks all src/ including tests)
 npm run lint       # eslint src/
@@ -39,6 +40,10 @@ TypeScript ESM library targeting Node ≥ 20. Source in `src/`.
 - Comments in parentheses (e.g. `user(comment)@example.com`)
 - Unicode/IDN local parts; TLD validation
 
+## Build
+
+`tsup.config.ts` — entry `src/is-valid-email.ts`, format `esm`, `dts: true`, output to `dist/`. Bundled by esbuild via tsup; handles `.ts` import extensions natively without requiring source changes.
+
 ## tsconfig setup
 
-Single config: `tsconfig.json` — base (`noEmit: true`), includes all `src/` files; used by IDE and `npm run typecheck`
+Single config: `tsconfig.json` — base (`noEmit: true`, `allowImportingTsExtensions: true`), includes all `src/` files; used by IDE and `npm run typecheck`. Not used by the build (tsup uses its own esbuild pipeline).
