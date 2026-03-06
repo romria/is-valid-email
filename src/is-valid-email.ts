@@ -111,11 +111,5 @@ export default function isValidEmail(email: string): boolean {
   // Reject disposable email providers
   if (DISPOSABLE_DOMAINS.has(normalizedDomain)) return false;
 
-  // Known limitations (not yet implemented):
-  // - Mixed quoted/unquoted atoms in local part (e.g. "first"."last"@example.com)
-  // - Comments in parentheses (e.g. user(comment)@example.com)
-  // - Unicode / IDN domains (xn-- notation)
-  // - TLD validation (https://publicsuffix.org/list/public_suffix_list.dat)
-
   return true;
 }

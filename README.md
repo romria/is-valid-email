@@ -47,7 +47,6 @@ This repository covers only **Email validation** procedure. It is based on stand
 npm test            # run test suite (265 tests)
 npm run test:watch  # vitest in watch mode
 npm run typecheck   # TypeScript type check
-npm run build       # compile to dist/
 npm run lint        # ESLint
 npm start           # visual demo with colored pass/fail output
 ```

@@ -40,9 +40,9 @@ const KNOWN_UNSUPPORTED: ReadonlySet<string> = new Set([
 describe('rejects invalid emails', () => {
   for (const email of INVALID_EMAILS) {
     if (KNOWN_UNSUPPORTED.has(email)) {
-      test.todo(`[unsupported] ${email}`);
+      test.todo(`[unsupported] ${JSON.stringify(email)}`);
     } else {
-      test(email, () => {
+      test(JSON.stringify(email), () => {
         expect(isValidEmail(email)).toBe(false);
       });
     }
@@ -52,9 +52,9 @@ describe('rejects invalid emails', () => {
 describe('accepts valid emails', () => {
   for (const email of VALID_EMAILS) {
     if (KNOWN_UNSUPPORTED.has(email)) {
-      test.todo(`[unsupported] ${email}`);
+      test.todo(`[unsupported] ${JSON.stringify(email)}`);
     } else {
-      test(email, () => {
+      test(JSON.stringify(email), () => {
         expect(isValidEmail(email)).toBe(true);
       });
     }
