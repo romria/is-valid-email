@@ -39,7 +39,7 @@ This repository covers only **Email validation** procedure. It is based on stand
 ---
 
 ### Prerequisites
-* [Node.js](https://nodejs.org/) v18 or higher
+* [Node.js](https://nodejs.org/) 20 or higher
 
 ### Development
 

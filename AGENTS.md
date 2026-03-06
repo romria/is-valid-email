@@ -18,7 +18,7 @@ npm start          # visual demo: runs validator against all test cases with col
 
 ## Architecture
 
-TypeScript ESM library targeting Node ≥ 18. Source in `src/`.
+TypeScript ESM library targeting Node ≥ 20. Source in `src/`.
 
 **Public API** — `src/is-valid-email.ts` exports a single default function `isValidEmail(email: string): boolean`.
 
