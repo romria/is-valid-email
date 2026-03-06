@@ -1,8 +1,6 @@
-## Front-End Email Validator
+## Email Validator
 
-🔭🔬🧪 Version is stable to use and further research is going on
-
-### Q&A: Email validation VS email verification?
+### Q&A: Email validation VS email verification
 
 We should clearly distinguish **Email validation** and **Email verification** processes.
 
@@ -10,7 +8,7 @@ We should clearly distinguish **Email validation** and **Email verification** pr
 
 **Email verification** process helps to verify if **theoretically valid** email actually exists, and there is a real user on the receiving end of the email address. To verify an email address, server will send an activation letter with link/code to it. Then the end user should activate it from their inbox: which confirms that this is a real email and user has access to it.
 
-Primarily, we should think this over from the business prospective:
+Primarily, we should think this over from the business perspective:
 * How much is it important to force users using a real email?
 * Should we allow users to use temporary/disposable email services?
 * Should it be required to confirm email ownership via confirmation letter/link before allowing to use the app?
@@ -18,33 +16,40 @@ Primarily, we should think this over from the business prospective:
 
 ---
 
-This repository covers only **Email validation** procedure, considering different algorithms and actions while trying to find the most 
-optimal approach. It is based on standards, known best practices and personal experience.
+This repository covers only **Email validation** procedure. It is based on standards, known best practices and personal experience.
 
 ### Algorithm Qualities
 * Used regular expressions are ReDoS safe
-* It doesn't utilize any API requests
-* More focused to avoid false positives (completely invalid emails being marked as valid) rather than false negatives (technically valid emails which were marked as invalid)
+* No API requests
+* More focused to avoid false positives (completely invalid emails being marked as valid) rather than false negatives (technically valid but obscure emails marked as invalid)
 
-### Supported features:
-* General rules based on RFC 822, RFC 5321, RFC 5322, RFC 1035, RFC 952, RFC 1123
-* IPv4/IPv6 domains
-* Check for disposable email providers
+### Supported
+* RFC 822, RFC 5321, RFC 5322, RFC 1035, RFC 952, RFC 1123
+* IPv4/IPv6 domains (`[123.123.123.123]`, `[IPv6:...]`)
+* Quoted local parts (`"first@last"@example.com`, `"john..doe"@example.com`)
+* IDN/ACE domain labels (`xn--` prefix)
+* Disposable email provider detection
 
-### To be added:
-* TLD check
-* Unicode support
-* quotes ""
-* comments ()
+### Not yet supported
+* Mixed quoted/unquoted atoms in local part (e.g. `"first"."last"@example.com`)
+* Comments in parentheses (e.g. `user(comment)@example.com`)
+* Unicode local parts
+* TLD validation
 
 ---
 
 ### Prerequisites
-* [Node.js](https://nodejs.org/) v18.11.0 or higher
+* [Node.js](https://nodejs.org/) 20 or higher
 
-### Run test cases
+### Development
+
 ```bash
-npm start
+npm run build       # compile to dist/ (ESM + type declarations)
+npm test            # run test suite (296 tests)
+npm run test:watch  # vitest in watch mode
+npm run typecheck   # TypeScript type check
+npm run lint        # ESLint
+npm start           # visual demo with colored pass/fail output
 ```
 
 ### Links

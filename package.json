@@ -1,12 +1,45 @@
 {
   "name": "is-valid-email",
   "version": "0.1.0",
-  "description": "",
+  "description": "RFC-compliant email address validator with disposable domain detection",
   "repository": "https://github.com/romria/is-valid-email",
-  "main": "./src/index.js",
-  "scripts": {
-    "start": "node ./src/index.js"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/is-valid-email.js",
+      "types": "./dist/is-valid-email.d.ts"
+    }
   },
+  "types": "./dist/is-valid-email.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "start": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "email",
+    "validation",
+    "validator",
+    "disposable"
+  ],
   "author": "romria",
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^4.0.0"
+  }
 }

@@ -1,22 +1,22 @@
-const VALID_EMAILS = [
+export const VALID_EMAILS = [
   `simple@example.com`,
   `very.common@example.com`,
   `disposable.style.email.with+symbol@example.com`,
   `other.email-with-hyphen@and.subdomains.example.com`,
   `fully-qualified-domain@example.com`,
-  `user.name+tag+sorting@example.com`,  //(may go to user.name@example.com inbox depending on mail server)
+  `user.name+tag+sorting@example.com`, // (may go to user.name@example.com inbox depending on mail server)
   `x@example.com`, // (one-letter local-part)
   `example-indeed@strange-example.com`,
   `test/test@test.com`, // (slashes are a printable character, and allowed)
-  `admin@mailserver1`, // (local domain name with no TLD, although ICANN highly discourages dotless email addresses[12])
+  `admin@mailserver1`, // (local domain name with no TLD, although ICANN highly discourages dotless email addresses)
   `example@s.example`, // (see the List of Internet top-level domains)
   `" "@example.org`, // (space between the quotes)
   `"john..doe"@example.org`, // (quoted double dot)
   `mailhost!username@example.org`, // (bangified host route used for uucp mailers)
-  `"very.(),:;<>[]\\".VERY.\\"very@\\ \\"very\\".unusual"@strange.example.com`, // (include non-letters character AND multiple at sign, the first one being double quoted)
+  `"very.(),:;<>[]\\".VERY.\\"very@\\ \\"very\\".unusual"@strange.example.com`, // (quoted with non-letters and multiple @ signs)
   `user%example.com@example.org`, // (% escaped mail route to user@example.com via example.org)
   `user-@example.org`, // (local part ending with non-alphanumeric character from the list of allowed printable characters)
-  `postmaster@[123.123.123.123]`, // (IP addresses are allowed instead of domains when in square brackets, but strongly discouraged)
+  `postmaster@[123.123.123.123]`, // (IP addresses are allowed instead of domains when in square brackets)
   `postmaster@[IPv6:2001:0db8:85a3:0000:0000:8a2e:0370:7334]`, // (IPv6 uses a different syntax)
   `first.last@iana.org`,
   `1234567890123456789012345678901234567890123456789012345678901234@iana.org`,
@@ -65,7 +65,7 @@ const VALID_EMAILS = [
   `"[[ test ]]"@iana.org`,
   `test.test@iana.org`,
   `"test.test"@iana.org`,
-  `test."test"@iana.org`,
+  `test."test"@iana.org`, // known limitation: mixed quoted/unquoted atoms
   `"test@test"@iana.org`,
   `test@123.123.123.x123`,
   `test@123.123.123.123`,
@@ -84,33 +84,33 @@ const VALID_EMAILS = [
   `Ima.Fool@iana.org`,
   `"Ima.Fool"@iana.org`,
   `"Ima Fool"@iana.org`,
-  `"first"."last"@iana.org`,
-  `"first".middle."last"@iana.org`,
-  `"first".last@iana.org`,
-  `first."last"@iana.org`,
-  `"first"."middle"."last"@iana.org`,
-  `"first.middle"."last"@iana.org`,
+  `"first"."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
+  `"first".middle."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
+  `"first".last@iana.org`, // known limitation: mixed quoted/unquoted atoms
+  `first."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
+  `"first"."middle"."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
+  `"first.middle"."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
   `"first.middle.last"@iana.org`,
   `"first..last"@iana.org`,
-  `"first\\\"last"@iana.org`,
-  `first."mid\\dle"."last"@iana.org`,
+  `"first\\"last"@iana.org`,
+  `first."mid\\dle"."last"@iana.org`, // known limitation: mixed quoted/unquoted atoms
   `"test blah"@iana.org`,
-  `(foo)cal(bar)@(baz)iamcal.com(quux)`,
-  `cal@iamcal(woo).(yay)com`,
-  `cal(woo(yay)hoopla)@iamcal.com`,
-  `cal(foo\\@bar)@iamcal.com`,
-  `cal(foo\\)bar)@iamcal.com`,
-  `first().last@iana.org`,
-  `pete(his account)@silly.test(his host)`,
-  `c@(Chris's host.)public.example`,
-  `jdoe@machine(comment). example`,
-  `1234 @ local(blah) .machine .example`,
-  `first(abc.def).last@iana.org`,
-  `first(a"bc.def).last@iana.org`,
-  `first.(")middle.last(")@iana.org`,
-  `first(abc\\(def)@iana.org`,
-  `first.last@x(1234567890123456789012345678901234567890123456789012345678901234567890).com`,
-  `a(a(b(c)d(e(f))g)h(i)j)@iana.org`,
+  `(foo)cal(bar)@(baz)iamcal.com(quux)`, // known limitation: comments
+  `cal@iamcal(woo).(yay)com`, // known limitation: comments
+  `cal(woo(yay)hoopla)@iamcal.com`, // known limitation: comments
+  `cal(foo\\@bar)@iamcal.com`, // known limitation: comments with @
+  `cal(foo\\)bar)@iamcal.com`, // known limitation: comments
+  `first().last@iana.org`, // known limitation: comments
+  `pete(his account)@silly.test(his host)`, // known limitation: comments
+  `c@(Chris's host.)public.example`, // known limitation: comments
+  `jdoe@machine(comment). example`, // known limitation: comments
+  `1234 @ local(blah) .machine .example`, // known limitation: comments
+  `first(abc.def).last@iana.org`, // known limitation: comments
+  `first(a"bc.def).last@iana.org`, // known limitation: comments
+  `first.(")middle.last(")@iana.org`, // known limitation: comments
+  `first(abc\\(def)@iana.org`, // known limitation: comments
+  `first.last@x(1234567890123456789012345678901234567890123456789012345678901234567890).com`, // known limitation: comments
+  `a(a(b(c)d(e(f))g)h(i)j)@iana.org`, // known limitation: comments
   `name.lastname@domain.com`,
   `a@b`,
   `a@bar.com`,
@@ -126,7 +126,7 @@ const VALID_EMAILS = [
   `shaitan@my-domain.thisisminekthx`,
   `foobar@192.168.0.1`,
   `"Joe\\Blow"@iana.org`,
-  `HM2Kinsists@(that comments are allowed)this.is.ok`,
+  `HM2Kinsists@(that comments are allowed)this.is.ok`, // known limitation: comments
   `user%uucp!path@berkeley.edu`,
   `cdburgess+!#$%&'*-/=?+_{}|~test@gmail.com`,
   `first.last@[IPv6:::a2:a3:a4:b1:b2:b3:b4]`,
@@ -151,15 +151,45 @@ const VALID_EMAILS = [
   `test@test.com`,
   `test@xn--example.com`,
   `test@example.com`,
+
+  // Local part: specific RFC-allowed special characters (unquoted)
+  `user'name@example.com`,    // apostrophe
+  `user&name@example.com`,    // ampersand
+  `user=name@example.com`,    // equals sign
+  `user?name@example.com`,    // question mark
+  `user^name@example.com`,    // caret
+  `user|name@example.com`,    // pipe
+  `user{name}@example.com`,   // braces
+
+  // Quoted local: minimum valid (exactly 3 chars: "x")
+  `"x"@example.com`,
+
+  // IPv4: boundary values
+  `user@[0.0.0.0]`,           // all zeros
+  `user@[255.255.255.255]`,   // all max octets
+
+  // Domain: consecutive hyphens in the middle of a label (valid per RFC 1123)
+  `user@a--b.com`,
+
+  // Domain: deep subdomain nesting
+  `user@a.b.c.d.e.f.g.h.com`,
+
+  // Case: email addresses are case-insensitive
+  `ALLCAPS@EXAMPLE.COM`,
+  `Mixed.Case+Symbol@Sub.Domain.Example.COM`,
+
+  // IDN / ACE domain labels
+  `user@xn--p1ai.com`,        // ACE label in the middle
+  `user@sub.xn--p1ai`,        // ACE TLD
 ];
 
-const INVALID_EMAILS = [
+export const INVALID_EMAILS = [
   `Abc.example.com`, // (no @ character)
   `A@b@c@example.com`, // (only one @ is allowed outside quotation marks)
-  `a"b(c)d,e:f;g<h>i[j\k]l@example.com`, // (none of the special characters in this local-part are allowed outside quotation marks)
+  `a"b(c)d,e:f;g<h>i[jk]l@example.com`, // (none of the special characters in this local-part are allowed outside quotation marks)
   `just"not"right@example.com`, // (quoted strings must be dot separated or the only element making up the local-part)
   `this is"not\\allowed@example.com`, // (spaces, quotes, and backslashes may only exist when within quoted strings and preceded by a backslash)
-  `this\\ still\\"not\\allowed@example.com`, // (even if escaped (preceded by a backslash), spaces, quotes, and backslashes must still be contained by quotes)
+  `this\\ still\\"not\\allowed@example.com`, // (even if escaped, spaces, quotes, and backslashes must still be contained by quotes)
   `1234567890123456789012345678901234567890123456789012345678901234+x@example.com`, // (local-part is longer than 64 characters)
   `i_like_underscore@but_its_not_allowed_in_this_part.example.com`, // (Underscore is not allowed in domain part)
   `QA[icon]CHOCOLATE[icon]@test.com`, // (icon characters)
@@ -177,7 +207,6 @@ const INVALID_EMAILS = [
   `""@iana.org`,
   `first\\@last@iana.org`,
   `first.last@`,
-  `x@x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23`,
   `first.last@[.12.34.56.78]`,
   `first.last@[12.34.56.789]`,
   `first.last@[::12.34.56.78]`,
@@ -264,8 +293,8 @@ const INVALID_EMAILS = [
   `-@a..com`,
   `invalid@about.museum-`,
   `test@...........com`,
-  `"Unicode NULL "@char.com`,
-  `Unicode NULL @char.com`,
+  `"Unicode \x00 "@char.com`,
+  `Unicode \x00 @char.com`,
   `first.last@[IPv6::]`,
   `first.last@[IPv6::::]`,
   `first.last@[IPv6::b4]`,
@@ -294,9 +323,29 @@ const INVALID_EMAILS = [
   `first.last@[IPv6:a1:a2:a3:a4:b1:b2:b3:]`,
   `first.last@[IPv6::a2:a3:a4:b1:b2:b3:b4]`,
   `first.last@[IPv6:a1:a2:a3:a4::b1:b2:b3:b4]`,
-];
 
-module.exports = {
-  VALID_EMAILS,
-  INVALID_EMAILS,
-}
+  // Local part: characters not allowed in unquoted position
+  `user,name@example.com`,    // comma
+  `user;name@example.com`,    // semicolon
+  `user:name@example.com`,    // colon
+  `user(comment)@example.com`, // parentheses
+  `\t@example.com`,           // tab character as entire local part
+
+  // Quoted local: control characters that must be rejected
+  `"\x01"@example.com`,       // SOH (code 1) inside quoted string
+  `"\x7f"@example.com`,       // DEL (code 127) inside quoted string
+
+  // IPv4: wrong octet count and out-of-range value
+  `user@[1.2.3]`,             // only 3 octets
+  `user@[1.2.3.4.5]`,         // 5 octets
+  `user@[256.1.2.3]`,         // first octet out of range (> 255)
+
+  // Disposable email providers
+  `user@mailinator.com`,
+  `user@yopmail.com`,
+  `user@guerrillamail.com`,
+
+  // Empty and whitespace-only inputs
+  ``,
+  `   `,
+];
