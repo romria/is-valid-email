@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
-import isValidEmail from './is-valid-email.js';
-import { VALID_EMAILS, INVALID_EMAILS } from './test-cases.js';
+import isValidEmail from './is-valid-email.ts';
+import { VALID_EMAILS, INVALID_EMAILS } from './test-cases.ts';
 
 // Emails excluded from strict assertion — unsupported features or ambiguous test data.
 const KNOWN_UNSUPPORTED: ReadonlySet<string> = new Set([

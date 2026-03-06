@@ -4,17 +4,7 @@
   "description": "RFC-compliant email address validator with disposable domain detection",
   "repository": "https://github.com/romria/is-valid-email",
   "type": "module",
-  "main": "./dist/is-valid-email.js",
-  "types": "./dist/is-valid-email.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/is-valid-email.js",
-      "types": "./dist/is-valid-email.d.ts"
-    }
-  },
-  "files": ["dist"],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "start": "tsx src/index.ts",
     "test": "vitest run",

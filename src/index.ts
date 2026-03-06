@@ -1,5 +1,5 @@
-import isValidEmail from './is-valid-email.js';
-import { VALID_EMAILS, INVALID_EMAILS } from './test-cases.js';
+import isValidEmail from './is-valid-email.ts';
+import { VALID_EMAILS, INVALID_EMAILS } from './test-cases.ts';
 
 const green = (s: string) => `\x1b[32m ✓ ${s}\x1b[0m`;
 const red = (s: string) => `\x1b[31m ✕ ${s}\x1b[0m`;

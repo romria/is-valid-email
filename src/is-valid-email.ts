@@ -1,5 +1,5 @@
-import DISPOSABLE_DOMAINS from './disposable-domains.js';
-import { RX_LOCAL, RX_DOMAIN_LABEL_RFC1123, RX_DOMAIN_IPV4, RX_DOMAIN_IPV6 } from './regexp.js';
+import DISPOSABLE_DOMAINS from './disposable-domains.ts';
+import { RX_LOCAL, RX_DOMAIN_LABEL_RFC1123, RX_DOMAIN_IPV4, RX_DOMAIN_IPV6 } from './regexp.ts';
 
 /**
  * Splits an email string into [local, domain] parts, correctly handling
@@ -59,7 +59,7 @@ function isValidQuotedLocal(local: string): boolean {
     } else if (char === '"') {
       // Unescaped quote terminates the string — invalid mid-content
       return false;
-    } else if (code < 32 || code === 127) {
+    } else if (code < 32 || code > 126) {
       // Control characters not allowed
       return false;
     }
@@ -99,7 +99,8 @@ export default function isValidEmail(email: string): boolean {
     return true;
   }
 
-  const domainLabels = domain.split('.');
+  const normalizedDomain = domain.toLowerCase();
+  const domainLabels = normalizedDomain.split('.');
 
   // Each domain label: 63 octets or less, valid characters (RFC 1035 section 2.3.4,
   // RFC 952, RFC 1123)
@@ -108,7 +109,7 @@ export default function isValidEmail(email: string): boolean {
   }
 
   // Reject disposable email providers
-  if (DISPOSABLE_DOMAINS.has(domain)) return false;
+  if (DISPOSABLE_DOMAINS.has(normalizedDomain)) return false;
 
   // Known limitations (not yet implemented):
   // - Mixed quoted/unquoted atoms in local part (e.g. "first"."last"@example.com)

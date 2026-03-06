@@ -12,16 +12,15 @@ Email validation function
 npm test           # run vitest test suite (265 passing, ~26 todo)
 npm run test:watch # vitest in watch mode
 npm run typecheck  # tsc --noEmit (checks all src/ including tests)
-npm run build      # tsc -p tsconfig.build.json → dist/
 npm run lint       # eslint src/
 npm start          # visual demo: runs validator against all test cases with colored output
 ```
 
 ## Architecture
 
-TypeScript ESM library targeting Node ≥ 18. Source in `src/`, built output in `dist/`.
+TypeScript ESM library targeting Node ≥ 18. Source in `src/`.
 
-**Public API** — `src/is-valid-email.ts` exports a single default function `isValidEmail(email: string): boolean`. The `package.json` `exports` and `main` both point to `dist/is-valid-email.js`.
+**Public API** — `src/is-valid-email.ts` exports a single default function `isValidEmail(email: string): boolean`.
 
 **Validation flow** (`src/is-valid-email.ts`):
 1. `splitEmailParts` — quote-aware `@` split; handles `"user@name"@domain` quoted locals
@@ -42,6 +41,4 @@ TypeScript ESM library targeting Node ≥ 18. Source in `src/`, built output in 
 
 ## tsconfig setup
 
-Two configs:
-- `tsconfig.json` — base (`noEmit: true`), includes all `src/` files; used by IDE and `npm run typecheck`
-- `tsconfig.build.json` — extends base, enables emit to `dist/`, excludes `*.test.ts`
+Single config: `tsconfig.json` — base (`noEmit: true`), includes all `src/` files; used by IDE and `npm run typecheck`
